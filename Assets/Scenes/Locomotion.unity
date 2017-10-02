@@ -117,9 +117,9 @@ GameObject:
   m_Component:
   - component: {fileID: 21356381}
   - component: {fileID: 21356380}
-  - component: {fileID: 21356379}
-  - component: {fileID: 21356378}
   - component: {fileID: 21356377}
+  - component: {fileID: 21356378}
+  - component: {fileID: 21356379}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -134,20 +134,48 @@ AudioListener:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 21356376}
   m_Enabled: 1
---- !u!124 &21356378
-Behaviour:
+--- !u!114 &21356378
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 21356376}
   m_Enabled: 1
---- !u!92 &21356379
-Behaviour:
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7c0d6e425c82f04fb4e8571116dde76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  distanceAway: 5
+  distanceUp: 2
+  smooth: 3
+  follow: {fileID: 0}
+  offset: {x: 0, y: 1.5, z: 0}
+--- !u!114 &21356379
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 21356376}
   m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9aaa3f5f2d574f228e4a21aa38b61e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mode: 1
+  showGeneratedNormals: 0
+  offsetScale: 0.2
+  blurRadius: 18
+  edgeThresholdMin: 0.05
+  edgeThreshold: 0.2
+  edgeSharpness: 4
+  dlaaSharp: 0
+  ssaaShader: {fileID: 4800000, guid: b3728d1488b02490cbd196c7941bf1f8, type: 3}
+  dlaaShader: {fileID: 4800000, guid: 017ca72b9e8a749058d13ebd527e98fa, type: 3}
+  nfaaShader: {fileID: 4800000, guid: ce0cb2621f6d84e21a87414e471a3cce, type: 3}
+  shaderFXAAPreset2: {fileID: 4800000, guid: 6f1418cffd12146f2a83be795f6fa5a7, type: 3}
+  shaderFXAAPreset3: {fileID: 4800000, guid: c182fa94a5a0a4c02870641efcd38cd5, type: 3}
+  shaderFXAAII: {fileID: 4800000, guid: cd5b323dcc592457790ff18b528f5e67, type: 3}
+  shaderFXAAIII: {fileID: 4800000, guid: c547503fff0e8482ea5793727057041c, type: 3}
 --- !u!20 &21356380
 Camera:
   m_ObjectHideFlags: 0
@@ -177,10 +205,10 @@ Camera:
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
   m_TargetEye: 3
-  m_HDR: 1
-  m_AllowMSAA: 1
+  m_HDR: 0
+  m_AllowMSAA: 0
   m_ForceIntoRT: 0
-  m_OcclusionCulling: 1
+  m_OcclusionCulling: 0
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
   m_StereoMirrorMode: 0
@@ -190,7 +218,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 21356376}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 1, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -443,6 +471,34 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 414035426}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &797818343
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 797818344}
+  m_Layer: 0
+  m_Name: Follow
+  m_TagString: FollowPlayerPosition
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &797818344
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 797818343}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1190665068}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &956955670
 Prefab:
   m_ObjectHideFlags: 0
@@ -452,11 +508,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4027715738091638, guid: 4dcfcb3a0ef7418438ea5071bd00dbd8, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -0.07
       objectReference: {fileID: 0}
     - target: {fileID: 4027715738091638, guid: 4dcfcb3a0ef7418438ea5071bd00dbd8, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.01
       objectReference: {fileID: 0}
     - target: {fileID: 4027715738091638, guid: 4dcfcb3a0ef7418438ea5071bd00dbd8, type: 2}
       propertyPath: m_LocalPosition.z
@@ -557,6 +613,15 @@ Prefab:
       propertyPath: m_ApplyRootMotion
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1417576550325904, guid: 4dcfcb3a0ef7418438ea5071bd00dbd8, type: 2}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 54319459623390352, guid: 4dcfcb3a0ef7418438ea5071bd00dbd8,
+        type: 2}
+      propertyPath: m_Interpolate
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4dcfcb3a0ef7418438ea5071bd00dbd8, type: 2}
   m_IsPrefabParent: 0
@@ -583,27 +648,29 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 0}
   directionDampTime: 0.25
+  gameCamera: {fileID: 21356378}
+  directionSpeed: 3
 --- !u!114 &1190665070
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1190665064}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9e189725cd50d5e4d9685014e9943197, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   on: 1
-  onlyInPlayMode: 1
+  onlyInPlayMode: 0
   sceneViewFollowers:
   - enable: 1
     positionOffset: {x: 0, y: 5, z: 0}
     enableFixedRotation: 1
     fixedRotation: {x: 90, y: 0, z: 0}
     targetTransform: {fileID: 1190665068}
-    size: 6.56
-    orthographic: 0
+    size: 10.62
+    orthographic: 1
     sceneViewIndex: 0
 --- !u!1 &1201691759
 GameObject:
